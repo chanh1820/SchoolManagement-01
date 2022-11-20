@@ -1,4 +1,4 @@
-package com.example.schoolmanagement_01.activity.quanlytrucnhat;
+package com.example.schoolmanagement_01.activity.quanlytrucnhat.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

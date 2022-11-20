@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/drawable/custom_textview_question.xml" value="0.153" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/activity_add_report.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/activity_add_report.xml" value="0.18" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/activity_chose_class.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/activity_main.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/activity_report.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/item_gridview_exam.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/item_report.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/SchoolManagement_01/app/src/main/res/layout/item_spinner.xml" value="0.36671368124118475" />
       </map>
     </option>
   </component>

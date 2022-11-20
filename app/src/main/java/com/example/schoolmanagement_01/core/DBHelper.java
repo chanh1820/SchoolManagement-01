@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,6 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         } catch (SQLiteException e) {
             //database chua ton tai
+            Log.e("Log","database chua ton tai");
         }
 
         if (checkDB != null)
@@ -98,7 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (dbExist) {
             //khong lam gi ca, database da co roi
-            copyDataBase();
         } else {
             this.getReadableDatabase();
             try {

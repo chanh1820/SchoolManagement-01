@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.schoolmanagement_01.R;
+import com.example.schoolmanagement_01.activity.quanlytrucnhat.adapter.ChooseClassAdapter;
 import com.example.schoolmanagement_01.core.DBConstants;
 import com.example.schoolmanagement_01.core.dto.ClassRoomDTO;
 
