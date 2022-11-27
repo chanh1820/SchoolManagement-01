@@ -13,16 +13,24 @@
         <TextView
             android:id="@+id/tv_student_name_report"
             android:layout_marginRight="8dp"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_default"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nguyễn Văn A"/>
+            android:text="Nguyễn Văn A" />
         <TextView
+            android:layout_marginVertical="4dp"
             android:id="@+id/tv_rule_name_report"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_default"
             android:textColor="@color/black"
             android:text="(-2) Không thuộc bài"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_created_date"
+            android:textSize="@dimen/text_size_default"
+            android:textColor="@color/black"
+            android:text="15:01 30/11/2022"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -32,7 +40,7 @@
         android:layout_gravity="left"
         android:layout_marginLeft="8dp"
         android:id="@+id/imv_image_report"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_default"
         android:textColor="@color/black"
         android:layout_width="120dp"
         android:layout_height="120dp"/>

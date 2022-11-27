@@ -3,9 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/linExam"
+    android:id="@+id/lv_choose_class_room_add_report"
     android:layout_marginVertical="160dp"
-    android:background="@drawable/custom_textview_question"
     android:gravity="center"
 
 

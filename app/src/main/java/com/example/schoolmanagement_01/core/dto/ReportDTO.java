@@ -10,22 +10,33 @@ public class ReportDTO {
 
     private String ruleName;
 
+    private Integer ruleId;
+
     private String studentName;
 
     private Integer minusPoint;
 
     private String pathImage;
 
+    private String createdDate;
+
     public ReportDTO() {}
 
-    public ReportDTO(Integer id, String week, String classRoom, String ruleName, String studentName, Integer minusPoint, String pathImage) {
+    public ReportDTO(Integer id, String week, String classRoom, String ruleName, String studentName,Integer ruleId, Integer minusPoint, String pathImage, String createdDate) {
         this.id = id;
         this.week = week;
         this.classRoom = classRoom;
         this.ruleName = ruleName;
+        this.ruleId = ruleId;
         this.studentName = studentName;
         this.minusPoint = minusPoint;
         this.pathImage = pathImage;
+        this.createdDate = createdDate;
+    }
+
+    public ReportDTO(Integer ruleId, Integer minusPoint) {
+        this.ruleId = ruleId;
+        this.minusPoint = minusPoint;
     }
 
     public Integer getId() {
@@ -60,6 +71,14 @@ public class ReportDTO {
         this.ruleName = ruleName;
     }
 
+    public Integer getRuleId() {
+        return ruleId;
+    }
+
+    public void setRuleId(Integer ruleId) {
+        this.ruleId = ruleId;
+    }
+
     public String getStudentName() {
         return studentName;
     }
@@ -82,5 +101,13 @@ public class ReportDTO {
 
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }

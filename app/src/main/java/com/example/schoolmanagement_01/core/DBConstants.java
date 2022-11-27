@@ -1,14 +1,19 @@
 package com.example.schoolmanagement_01.core;
 
+import com.example.schoolmanagement_01.core.dto.CalculatorMinusMap;
 import com.example.schoolmanagement_01.core.dto.ClassRoomDTO;
 import com.example.schoolmanagement_01.core.dto.RuleDTO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DBConstants {
 
+      /**
+       * classRoomDTOS
+       */
     public  static final  ArrayList<ClassRoomDTO> classRoomDTOS = new ArrayList<ClassRoomDTO>(){{
           add(new ClassRoomDTO(1,"0601","6/1")) ;
           add(new ClassRoomDTO(2,"0602","6/2")) ;
@@ -33,6 +38,29 @@ public class DBConstants {
             }
       }};
 
+      public static final List<String> listClassSang = new ArrayList<String>(){{
+            add("6/1");
+            add("6/2");
+            add("6/3");
+            add("6/4");
+            add("9/1");
+            add("9/2");
+            add("9/3");
+            add("9/4");
+      }};
+      public static final List<String> listClassChieu = new ArrayList<String>(){{
+            add("7/1");
+            add("7/2");
+            add("7/3");
+            add("7/4");
+            add("8/1");
+            add("8/2");
+            add("8/3");
+            add("8/4");
+      }};
+      /**
+       * listRuleDTO
+       */
     public  static final List<RuleDTO> listRuleDTO = new ArrayList<RuleDTO>(){{
           add(new RuleDTO(1,0,"Chuyên cần",2));
           add(new RuleDTO(2,1,"Nghĩ học không phép",-2));
@@ -58,6 +86,9 @@ public class DBConstants {
 
     }};
 
+      /**
+       * listWeek
+       */
     public static final List<String> listWeek = new ArrayList<String>(){{
           add("1");
           add("2");
@@ -86,9 +117,30 @@ public class DBConstants {
           add("25");
           add("26");
     }};
+      public static final Map<Integer, CalculatorMinusMap> calculatorMinusMap = new HashMap<Integer, CalculatorMinusMap>(){{
+            put(2,new CalculatorMinusMap(-2,1));
+            put(3,new CalculatorMinusMap(-1,1));
 
+            put(5,new CalculatorMinusMap(-2,4));
+            put(6,new CalculatorMinusMap(-2,4));
+            put(7,new CalculatorMinusMap(-2,4));
 
+            put(9,new CalculatorMinusMap(-2,8));
+            put(10,new CalculatorMinusMap(-2,8));
+            put(11,new CalculatorMinusMap(-2,8));
+            put(12,new CalculatorMinusMap(-5,8));
+            put(13,new CalculatorMinusMap(-5,8));
+            put(14,new CalculatorMinusMap(-5,8));
+            put(15,new CalculatorMinusMap(-2,8));
 
+            put(17,new CalculatorMinusMap(-5,16));
+            put(18,new CalculatorMinusMap(-2,16));
+      }};
+
+      public static final List<String> listSession = new ArrayList<String>(){{
+            add("Sáng");
+            add("Chiều");
+      }};
 
 
 

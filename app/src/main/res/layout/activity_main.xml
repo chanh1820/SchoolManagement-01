@@ -4,7 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:orientation="vertical"
+    tools:context=".activity.main.MainActivity"
+    android:background="@color/back_ground_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="4dp"
+        >
+        <TextView
+            android:textSize="@dimen/text_size_default_max"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRƯỜNG THCS PHÚ PHỤNG"
+            android:textColor="#F44336"/>
+        <TextClock
+            android:textSize="@dimen/text_size_default_min"
+            android:textStyle="bold"
+            android:id="@+id/textclock"
+            android:format24Hour="E, d-M-yyyy k:m:sa"
+            android:format12Hour="k:m:sa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
+        >
+        <TextView
+            android:textSize="@dimen/text_size_default"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuần:"/>
+        <Spinner
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/style_spinner2"
+            android:textSize="@dimen/text_size_default"
+            android:textStyle="bold"
+            android:id="@+id/spn_choose_week"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:textSize="@dimen/text_size_default"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Người trực: "/>
+        <EditText
+            android:id="@+id/edt_input_staff"
+            android:layout_gravity="center"
+            android:paddingHorizontal="20sp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,45 +85,79 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="152dp">
 
-        <Button
-            android:id="@+id/btn_quan_ly_truc_nhat"
-            android:layout_width="325dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:gravity="left"
-            android:text="Quản lý trực nhật"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
-        <Button
-            android:id="@+id/btn_danh_sach_vi_pham"
-            android:layout_width="325dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:gravity="left"
-            android:text="Thống kê từng lớp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_quan_ly_truc_nhat"
+                android:layout_width="160dp"
+                android:layout_height="150dp"
+                android:backgroundTint="@color/button"
+                android:gravity="center"
+                android:text="Quản lý trực nhật"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_default"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_xep_loai_tiet_hoc"
+                android:layout_width="160dp"
+                android:layout_height="150dp"
+                android:backgroundTint="@color/button"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:text="Xếp loại tiết học"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_default"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_danh_sach_vi_pham"
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:backgroundTint="@color/button"
+                    android:gravity="center"
+                    android:text="Thống kê từng lớp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_default"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btn_bang_tong_ket"
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:backgroundTint="@color/button"
+                    android:gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:text="Bảng tổng kết"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_default"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
-        <Button
-            android:id="@+id/btn_quiz"
-            android:layout_width="325dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:gravity="left"
-            android:text="Thống kê từng lớp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp" />

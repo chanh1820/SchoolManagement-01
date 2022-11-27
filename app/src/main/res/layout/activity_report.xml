@@ -6,28 +6,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.danhsachvipham.ReportActivity">
-    <Spinner
-        android:background="#18ffff"
-        android:id="@+id/spn_choose_week"
+    <LinearLayout
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:dropDownVerticalOffset="40dp"
-        android:layout_margin="16dp" />
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuần:"
+            android:textSize="@dimen/text_size_default"
+            android:textStyle="bold"/>
+        <Spinner
+            android:background="@drawable/style_spinner"
+            android:id="@+id/spn_choose_week"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:dropDownVerticalOffset="40dp"
+        />
+    </LinearLayout>
 
-    <Spinner
-        android:background="#18ffff"
-        android:id="@+id/spn_choose_class_room"
+    <LinearLayout
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:dropDownVerticalOffset="40dp"
-        android:layout_margin="16dp" />
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lớp:"
+            android:textSize="@dimen/text_size_default"
+            android:textStyle="bold"/>
+        <Spinner
+            android:background="@drawable/style_spinner"
+            android:id="@+id/spn_choose_class_room"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:dropDownVerticalOffset="40dp" />
+    </LinearLayout>
     <Button
         android:id="@+id/btn_search_report"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:backgroundTint="@color/button"
+        android:drawableRight="@drawable/ic_baseline_search_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:text="Tìm"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_notify"
+        android:visibility="gone"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không tìm thấy học sinh vi phạm !"/>
     <ListView
         android:id="@+id/lv_report"
         android:layout_width="match_parent"

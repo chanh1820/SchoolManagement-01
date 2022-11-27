@@ -1,6 +1,7 @@
 package com.example.schoolmanagement_01.activity.quanlytrucnhat.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseClassAdapter extends ArrayAdapter<ClassRoomDTO> {
-
-
     public ChooseClassAdapter(@NonNull Context context, int resource, @NonNull List<ClassRoomDTO> objects) {
         super(context, resource, objects);
     }
@@ -31,10 +30,7 @@ public class ChooseClassAdapter extends ArrayAdapter<ClassRoomDTO> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_gridview_exam, parent, false);
         }
-
         TextView txtName = convertView.findViewById(R.id.tv_class_room_name);
-        LinearLayout linExam= (LinearLayout) convertView.findViewById(R.id.linExam);
-
         ClassRoomDTO classRoomDTO = getItem(position);
         txtName.setText(classRoomDTO.getClassName());
         return convertView;

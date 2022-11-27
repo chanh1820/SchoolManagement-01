@@ -1,18 +1,22 @@
 package com.example.schoolmanagement_01.activity.quanlytrucnhat;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.util.TimeUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -27,12 +31,15 @@ import com.example.schoolmanagement_01.activity.quanlytrucnhat.adapter.ChooseStu
 import com.example.schoolmanagement_01.core.DBConstants;
 import com.example.schoolmanagement_01.core.UltilService;
 import com.example.schoolmanagement_01.core.dao.GeneralDAO;
+import com.example.schoolmanagement_01.core.dto.ReportDTO;
 import com.example.schoolmanagement_01.core.dto.RuleDTO;
 import com.example.schoolmanagement_01.core.dto.StudentDTO;
 
 
 
 import java.io.ByteArrayOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,19 +61,22 @@ public class AddReportActivity extends AppCompatActivity {
     ChooseRuleParentAdapter chooseRuleParentAdapter;
     ChooseRuleChildAdapter chooseRuleChildAdapter;
     GeneralDAO generalDAO;
-
-    String className = "";
-    String studentName = "";
-    String ruleChild = "";
-    Integer minusPoint = 0;
-    String imageBitmap="";
-    String weekCurrent = "20";
-
+    ReportDTO reportDTO = new ReportDTO();
+//    String className = "";
+//    String studentName = "";
+//    String ruleChild = "";
+//    Integer ruleId = -1;
+//    Integer minusPoint = 0;
+//    String imageBitmap="";
+    SharedPreferences  sharedPref;
+    String weekCurrent = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
+        sharedPref = getSharedPreferences("week", MODE_PRIVATE);
+        weekCurrent = sharedPref.getString("week", 0+"");
         initView();
         action();
 
@@ -89,7 +99,7 @@ public class AddReportActivity extends AppCompatActivity {
             if(requestCode == CAMERA_REQUEST_CODE){
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 imvInitImage.setImageBitmap(bitmap);
-                imageBitmap = UltilService.BitMapToString(bitmap);
+                reportDTO.setPathImage(UltilService.BitMapToString(bitmap));
             }
         }
     }
@@ -100,37 +110,39 @@ public class AddReportActivity extends AppCompatActivity {
         chooseRuleParentSpinner = findViewById(R.id.spn_choose_rule_parent);
         imvInitImage = findViewById(R.id.imv_init_image);
         btnSaveReport = findViewById(R.id.btn_save_report);
-
-        ImageView imageView, imageView2;
-        Button button = findViewById(R.id.btn_save_report);
-        imageView = findViewById(R.id.imv_init_image);
-        imageView2 = findViewById(R.id.imageView2);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        reportDTO.setWeek(weekCurrent);
+        Log.e("week",weekCurrent);
+        btnSaveReport.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                Log.e("week",weekCurrent);
-                Log.e("class",className);
-                Log.e("ruleChild",ruleChild);
-                Log.e("student",studentName);
-                Log.e("minusPoint",minusPoint+" ");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+                LocalDateTime now = LocalDateTime.now();
+                Log.e("week",reportDTO.getWeek());
+                Log.e("class",reportDTO.getClassRoom());
+                Log.e("ruleChild",reportDTO.getRuleName());
+                Log.e("ruleId",reportDTO.getRuleId()+"");
+                Log.e("student",reportDTO.getStudentName());
+                Log.e("minusPoint",reportDTO.getMinusPoint()+" ");
                 Log.e("imagebitmap","image bitmap");
-                generalDAO.saveReport(weekCurrent,className,ruleChild, studentName,minusPoint, imageBitmap);
+                Log.e("createDate", dtf.format(now));
+                reportDTO.setCreatedDate(dtf.format(now));
+                generalDAO.saveReport(reportDTO);
 
             }
         });
 
 
         Intent i = getIntent();
-        className =  i.getStringExtra("class");
+        reportDTO.setClassRoom(i.getStringExtra("class"));
         generalDAO = new GeneralDAO(getApplicationContext());
-        studentDTOList = generalDAO.findStudentByClassRoom(className);
+        studentDTOList = generalDAO.findStudentByClassRoom(reportDTO.getClassRoom());
         chooseStudentAdapter = new ChooseStudentAdapter(getApplicationContext(),studentDTOList);
         studentSpinner.setAdapter(chooseStudentAdapter);
         studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                studentName = studentDTOList.get(i).getStudentName();
+                reportDTO.setStudentName(studentDTOList.get(i).getStudentName());
             }
 
             @Override
@@ -162,7 +174,9 @@ public class AddReportActivity extends AppCompatActivity {
         chooseRuleChildSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ruleChild = ruleChildList.get(i).getRuleName();
+                reportDTO.setRuleName(ruleChildList.get(i).getRuleName());
+                reportDTO.setRuleId(ruleChildList.get(i).getId());
+                reportDTO.setMinusPoint(ruleChildList.get(i).getMinusPoint());
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
